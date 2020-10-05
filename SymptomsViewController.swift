@@ -27,4 +27,4 @@ class SymptomsViewController: UIViewController, UISearchBarDelegate {
     
     
 
-}
+} 
