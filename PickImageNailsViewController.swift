@@ -3,7 +3,7 @@
 //  Treatably
 //
 //  Created by Ívar Guðmundsson on 05/10/2020.
-//  Copyright © 2020 Treatably. All rights reserved.
+//  Copyright © 2020 Treatably. All rights reserved. 
 //
 
 import UIKit
