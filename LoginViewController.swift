@@ -40,7 +40,7 @@ class LoginViewController: UIViewController {
             }
         }
         else
-        {
+        { 
             //display alert msg
             displayMyAlertMessage(userMessage: "Email is incorrect");
             return;
