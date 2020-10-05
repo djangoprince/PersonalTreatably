@@ -1,2 +1,2 @@
 # Treatably
-Medical app
+Medical app developed with Swift using Xcode
