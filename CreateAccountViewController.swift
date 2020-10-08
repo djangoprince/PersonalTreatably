@@ -8,10 +8,9 @@
 
 import UIKit
 
-class CreateAccountViewController: UIViewController {
+class CreateAccountViewController: UIViewController { 
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var userFamilyNameTextField: UITextField!
-    @IBOutlet weak var userGenderTextField: UITextField!
     @IBOutlet weak var userPasswordTextField: UITextField!
     @IBOutlet weak var userKannitalaTextField: UITextField!
     @IBOutlet weak var userEmailTextField: UITextField!
@@ -26,14 +25,13 @@ class CreateAccountViewController: UIViewController {
     @IBAction func CreateAccountButtonTapped(_ sender: Any) {
         let userName = userNameTextField.text;
         let userFamilyName = userFamilyNameTextField.text;
-        let userGender = userGenderTextField.text;
         let userPassword = userPasswordTextField.text;
         let userKannitala = userKannitalaTextField.text;
         let userEmail = userEmailTextField.text;
     
     //check for empty files
         if (((userEmail?.isEmpty ) != nil) || ((userPassword?.isEmpty) != nil)
-            || ((userName?.isEmpty) != nil) || ((userFamilyName?.isEmpty) != nil) || ((userKannitala?.isEmpty) != nil) || ((userGender?.isEmpty) != nil))
+            || ((userName?.isEmpty) != nil) || ((userFamilyName?.isEmpty) != nil) || ((userKannitala?.isEmpty) != nil) )
         {
             //display alert msg
             displayMyAlertMessage(userMessage: "All fields are required");
@@ -42,7 +40,6 @@ class CreateAccountViewController: UIViewController {
         // Save data
         UserDefaults.standard.set(userName, forKey: "userName");
         UserDefaults.standard.set(userEmail, forKey: "userFamilyName");
-        UserDefaults.standard.set(userGender, forKey: "userGender");
         UserDefaults.standard.set(userKannitala, forKey: "userKannitala");
         UserDefaults.standard.set(userPassword, forKey: "userPassword");
         UserDefaults.standard.set(userEmail, forKey: "userEmail");
@@ -57,6 +54,6 @@ class CreateAccountViewController: UIViewController {
     {
         _ = UIAlertController(title: "Alert",message: userMessage, preferredStyle: UIAlertController.Style.alert);
     }
-    
+   
 
 }
