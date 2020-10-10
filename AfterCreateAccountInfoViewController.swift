@@ -2,7 +2,7 @@
 //  AfterCreateAccountInfoViewController.swift
 //  Treatably
 //
-//  Created by Ívar Guðmundsson on 07/10/2020.
+//  Created by Safa Jemai on 07/10/2020.
 //  Copyright © 2020 Treatably. All rights reserved.
 //
 
