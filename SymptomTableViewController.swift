@@ -4,7 +4,7 @@
 //
 //  Created by Safa Jemai on 09/10/2020.
 //  Copyright © 2020 Treatably. All rights reserved.
-//
+// this class is to help the user choose the symptoms that he has throgh a search bar 
 
 import UIKit
 
