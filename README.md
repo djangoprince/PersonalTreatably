@@ -3,7 +3,8 @@ Medical app developed with Swift using Xcode.
 Visit this issue link to take a look at some screenshots of Treatably from Xcode. 
 https://github.com/djangoprince/Treatably/issues/1#issue-716975365
 
-I recommend starting by these files: 
+If you are going to take a look at the classes, I recommend starting by these files: 
+
 1- CreatAccountViewController
 
 2- LoginViewController 
@@ -19,4 +20,6 @@ I recommend starting by these files:
 7- LinksagaViewController.swift
 
 I am still working on the other files! :) 
+
+Enjoy!
 
