@@ -2,7 +2,7 @@
 //  CalendarViewController.swift
 //  Treatably
 //
-//  Created by Ívar Guðmundsson on 09/10/2020.
+//  Created by Safa Jemai on 09/10/2020.
 //  Copyright © 2020 Treatably. All rights reserved.
 //
 
