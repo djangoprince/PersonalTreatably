@@ -1,0 +1,113 @@
+//
+//  FoodIntakeViewController.swift
+//  Treatably
+//
+//  Created by Safa jemai on 29/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import UIKit
+import SwiftUI
+
+
+class FoodIntakeViewController: UIViewController {
+    
+    
+    //create instance of this class
+    static let FoodIntakeInstance = FoodIntakeViewController()
+    
+    // different button ingredients
+    @IBOutlet weak var GlutenBtn: UIButton!
+    @IBOutlet weak var LactoseBtn: UIButton!
+    @IBOutlet weak var CafBtn: UIButton!
+    @IBOutlet weak var EggBtn: UIButton!
+    @IBOutlet weak var SoyBtn: UIButton!
+    @IBOutlet weak var FructoseBtn: UIButton!
+    @IBOutlet weak var FodmapBtn: UIButton!
+    
+    //different labes for the buttons of ingredients
+    
+    @IBOutlet weak var GlutenLabel: UILabel!
+    @IBOutlet weak var LactoseLabel: UILabel!
+    @IBOutlet weak var CafLabel: UILabel!
+    @IBOutlet weak var EggLabel: UILabel!
+    @IBOutlet weak var SoyLabel: UILabel!
+    @IBOutlet weak var FructoseLabel: UILabel!
+    @IBOutlet weak var FodmapLabel: UILabel!
+    
+    //space to show checked ingredients by user
+    @IBOutlet weak var SavedIngredientsLabel: UILabel!
+    
+    //save btn
+    @IBOutlet weak var SaveIngBtn: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        SavedIngredientsLabel.text = UDM.shared.SavedIngredientsLabelFcn()
+    }
+    
+    //check which ingredients are chosen by user
+    
+    @IBAction func BtnRadioAction(_ sender: UIButton) {
+        if sender.tag == 1
+        
+        {
+            GlutenBtn.isSelected = true
+            
+            //add checked items to the saved ingredients space
+            SavedIngredientsLabel.text? += " #" + GlutenLabel.text!
+            //check ingredient and save it inside the DefaultUser from UDM class under LabRsultsViewController
+            UDM.shared.defaults?.setValue("Gluten", forKey: "Gluten")
+        }
+        
+        if sender.tag == 2
+        {
+            LactoseBtn.isSelected = true
+            SavedIngredientsLabel.text? += " #" + LactoseLabel.text!
+           UDM.shared.defaults?.setValue("Lactose", forKey: "Lactose")
+        }
+        
+        if sender.tag == 3
+        {
+            CafBtn.isSelected = true
+            SavedIngredientsLabel.text? += " #" + CafLabel.text!
+          UDM.shared.defaults?.setValue("Caffeine", forKey: "Caffeine")
+        }
+        
+        if sender.tag == 4
+        {
+            EggBtn.isSelected = true
+            SavedIngredientsLabel.text? += " #" + EggLabel.text!
+            UDM.shared.defaults?.setValue("Egg", forKey: "Egg")
+        }
+        
+        if sender.tag == 5
+        {
+            SoyBtn.isSelected = true
+            SavedIngredientsLabel.text? += " #" + SoyLabel.text!
+            UDM.shared.defaults?.setValue("Soy", forKey: "Soy")
+        }
+        
+        if sender.tag == 6
+        {
+            FructoseBtn.isSelected = true
+            SavedIngredientsLabel.text? += " #" + FructoseLabel.text!
+          UDM.shared.defaults?.setValue("Fructose", forKey: "Fructose")
+        }
+        
+        if sender.tag == 7
+        {
+            FodmapBtn.isSelected = true
+            SavedIngredientsLabel.text? += " #" + FodmapLabel.text!
+           UDM.shared.defaults?.setValue("Fodmap", forKey: "Fodmap")
+          
+        }
+        
+    }
+    
+    
+    @IBAction func SaveIngBtnAction(_ sender: Any) {
+        UDM.shared.defaults?.setValue(SavedIngredientsLabel.text, forKey: "SavedIngredientsLabel")
+    }
+    
+}
