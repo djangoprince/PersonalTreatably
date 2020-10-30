@@ -1,0 +1,34 @@
+//
+//  TabMain.swift
+//  Treatably
+//
+//  Created by Ívar Guðmundsson on 28/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import Foundation
+import  UIKit
+
+class  TabMain: UITabBarController {
+     var userName: String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //get user name from cretaeaccountView to MainView
+        guard let viewControllers = viewControllers else {
+            return
+        }
+        for viewController in viewControllers {
+            
+            if let MainNavigatorController = viewController as? mainNavigatorController { //navigator
+                
+                if let mainViewController = MainNavigatorController.viewControllers.first as? MainViewController {
+                    
+                    mainViewController.userName = userName
+                }
+            }
+        }
+        
+        
+    }
+}
