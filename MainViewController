@@ -1,0 +1,23 @@
+//
+//  MainViewController.swift
+//  Treatably
+//
+//  Created by Safa Jemai on 28/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import UIKit
+
+class MainViewController: UIViewController {
+    var userName: String?
+    @IBOutlet weak var userNameLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        userNameLabel.text = UDM.shared.UserNameAccount()
+        
+    } 
+    
+
+
+}
