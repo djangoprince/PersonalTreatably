@@ -1,0 +1,75 @@
+//
+//  BasicInformationViewController.swift
+//  Treatably
+//
+//  Created by Safa Jemai on 30/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import UIKit
+
+class BasicInformationViewController: UIViewController {
+
+    @IBOutlet weak var SaveBtn: UIButton!
+    
+    //all labels for items in the view
+    @IBOutlet weak var NameLabel: UILabel!
+    @IBOutlet weak var FamilyNameLabel: UILabel!
+    @IBOutlet weak var BirthdayLabel: UILabel!
+    @IBOutlet weak var GenderLabel: UILabel!
+    @IBOutlet weak var EmailLabel: UILabel!
+    @IBOutlet weak var PhoneNumberLabel: UILabel!
+    
+    // all textField for items in the view
+    @IBOutlet weak var NameTextField: UITextField!
+    @IBOutlet weak var FamilyNameTextField: UITextField!
+    @IBOutlet weak var BirthdayTextField: UITextField!
+    @IBOutlet weak var GenderTextField: UITextField!
+    @IBOutlet weak var EmailTextField: UITextField!
+    @IBOutlet weak var PhoneNumberTextField: UITextField!
+    
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NameTextField.text = UDM.shared.UserNameAccount()
+        FamilyNameLabel.text = UDM.shared.FamilyNameFcn()
+        BirthdayLabel.text = UDM.shared.BirthdayFcn()
+        GenderLabel.text = UDM.shared.GenderFcn()
+        EmailLabel.text = UDM.shared.EmailLabelFcn()
+        PhoneNumberLabel.text = UDM.shared.PhoneNumberFcn()
+        
+    }
+    
+    
+    @IBAction func SaveBtnAction(_ sender: Any) {
+        //update values
+        
+        if ((UDM.shared.defaults?.string(forKey: "userName")) != nil){
+                   UDM.shared.defaults?.set(NameTextField.text, forKey: "userName")
+               }
+        
+        if ((UDM.shared.defaults?.string(forKey: "userFamilyName")) != nil){
+            UDM.shared.defaults?.set(FamilyNameLabel.text, forKey: "userFamilyName")
+        }
+        
+       if ((UDM.shared.defaults?.string(forKey: "userGender")) != nil){
+                  UDM.shared.defaults?.set(GenderLabel.text, forKey: "userGender")
+              }
+        
+        if ((UDM.shared.defaults?.string(forKey: "userBirthday")) != nil){
+                   UDM.shared.defaults?.set(BirthdayLabel.text, forKey: "userBirthday")
+               }
+        
+        if ((UDM.shared.defaults?.string(forKey: "userEmail")) != nil){
+                   UDM.shared.defaults?.set(EmailLabel.text, forKey: "userEmail")
+               }
+        
+        if ((UDM.shared.defaults?.string(forKey: "userPhoneNumber")) != nil){
+                   UDM.shared.defaults?.set(PhoneNumberLabel.text, forKey: "userPhoneNumber")
+               }
+        
+    
+    }
+    
+}
