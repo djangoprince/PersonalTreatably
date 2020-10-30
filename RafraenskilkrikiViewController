@@ -1,4 +1,5 @@
-//
+//This class is to verify the authentication key of the user. he must have one to be able to continue to the interface. 
+//This class is currently not finished.
 //  RafraenskilkrikiViewController.swift
 //  Treatably
 //
