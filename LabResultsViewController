@@ -1,0 +1,105 @@
+//
+//  LabResultsViewController.swift
+//  Treatably
+//
+//  Created by Safa Jemai on 28/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import UIKit
+
+class LabResultsViewController: UIViewController, UITextFieldDelegate {
+    // change it with system date
+    @IBOutlet weak var DataDataLabel: UILabel!
+    
+    @IBOutlet weak var ThyroglobulinAntibodiesTextField: UITextField!
+    @IBOutlet weak var ThyroidPeroxidaseAntibodiesTextField: UITextField!
+    @IBOutlet weak var T3TotalTextField: UITextField!
+    @IBOutlet weak var T4FreeTextField: UITextField!
+    @IBOutlet weak var T4TotalTextField: UITextField!
+    @IBOutlet weak var TSHTextField: UITextField!
+    @IBOutlet weak var CommentTextField: UITextField!
+    //labels to restore data from UITextField
+    @IBOutlet weak var SavedLabel1: UILabel!
+    @IBOutlet weak var SavedLabel2: UILabel!
+    @IBOutlet weak var SavedLabel3: UILabel!
+    @IBOutlet weak var SavedLabel4: UILabel!
+    @IBOutlet weak var SavedLabel5: UILabel!
+    @IBOutlet weak var SavedLabel6: UILabel!
+    @IBOutlet weak var SavedLabel7: UILabel!
+    
+    //purpuse is to save the data  and replay the next time the user connects
+    //let userDefaults = UserDefaults(suiteName: "com.Tehf.Treatably")
+    
+    // when user press enter, he saves data
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        ThyroglobulinAntibodiesTextField.delegate = self
+        ThyroidPeroxidaseAntibodiesTextField.delegate = self
+        T3TotalTextField.delegate = self
+        T4FreeTextField.delegate = self
+        T4TotalTextField.delegate = self
+        TSHTextField.delegate = self
+        CommentTextField.delegate = self
+        
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        //save the lab results data in userDefault
+        
+        UDM.shared.defaults?.setValue(ThyroglobulinAntibodiesTextField.text, forKey: "ThyroglobulinAntibodies")
+        ThyroglobulinAntibodiesTextField.resignFirstResponder()
+        
+        UDM.shared.defaults?.setValue(ThyroidPeroxidaseAntibodiesTextField.text, forKey: "ThyroidPeroxidaseAntibodies")
+        ThyroidPeroxidaseAntibodiesTextField.resignFirstResponder()
+        
+        UDM.shared.defaults?.setValue(T3TotalTextField.text, forKey: "T3Total")
+        T3TotalTextField.resignFirstResponder()
+        
+        UDM.shared.defaults?.setValue(T4FreeTextField.text, forKey: "T4Free")
+        T4FreeTextField.resignFirstResponder()
+        
+        UDM.shared.defaults?.setValue(T4TotalTextField.text, forKey: "T4Total")
+        T4TotalTextField.resignFirstResponder()
+        
+        UDM.shared.defaults?.setValue(TSHTextField.text, forKey: "TSH")
+        TSHTextField.resignFirstResponder()
+        
+        UDM.shared.defaults?.setValue(CommentTextField.text, forKey: "Comment")
+        CommentTextField.resignFirstResponder()
+        
+        return true
+    }
+    
+    @IBAction func SaveBtnClick(_ sender: Any) {
+        SavedLabel1.text  = UDM.shared.ThyroglobulinAntibodies()
+        print (UDM.shared.ThyroglobulinAntibodies()!)
+        
+       SavedLabel2.text  = UDM.shared.ThyroglobulinAntibodies()
+        print (UDM.shared.ThyroglobulinAntibodies()!)
+        
+        SavedLabel3.text  = UDM.shared.T3Total()
+        print (UDM.shared.T3Total()!)
+        
+        SavedLabel4.text  = UDM.shared.T4Free()
+        print (UDM.shared.T4Free()!)
+        
+        SavedLabel5.text  = UDM.shared.T4Total()
+        print (UDM.shared.T4Total()!)
+        
+        SavedLabel6.text  = UDM.shared.TSH()
+        print (UDM.shared.TSH()!)
+        
+        SavedLabel7.text  = UDM.shared.Comment()
+        print (UDM.shared.Comment()!)
+    }
+    
+    @IBAction func LOadDataBtnClick(_ sender: Any) {
+        ThyroglobulinAntibodiesTextField.text = SavedLabel1.text
+        
+    }
+
+    
+
+}
+// this userDefault data array will be saving all our light data in the project among different UIView controllers
+
