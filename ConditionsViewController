@@ -1,0 +1,33 @@
+//
+//  ConditionsViewController.swift
+//  Treatably
+//
+//  Created by Safa jemai on 28/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import UIKit
+
+class ConditionsViewController: UIViewController {
+
+   /* @IBAction func pressStart(_ sender: Any) {
+        print ("start")
+    }
+    
+    @IBAction func Middle(_ sender: Any) {
+        print ("Middle")
+    }
+    @IBAction func pressEnd(_ sender: Any) {
+        print ("End")
+    }*/
+    
+     
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+   
+
+}
