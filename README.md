@@ -13,5 +13,5 @@ After that, I took the stored data and displayed it to the user in a useful way 
 On the other hand, I had looked into the API shared in the hackathon website, I found some ones that allign with our needs. Our next step is to use them to show data related to blood tests and other lab results. 
 
 
-Enjoy!
+Enjoy reading my code!
 
