@@ -10,7 +10,7 @@ After looking into data security issues, I switched my attention to finding ways
 
 After that, I took the stored data and displayed it to the user in a useful way like in the interface: BasicInformationViewController where the user can go and check the data that he inserted when he created an account then he can edit it if needed and save again. 
 
-On the other hand, I had looked into the API shared in the hackathon website, I found some ones that allign with our needs. Our next step is to use them to show data related to blood tests and other lab results. 
+On the other hand, I had looked into the APIs shared in the hackathon website, I found some ones that allign with our needs. Our next step is to use them to show data related to blood tests and other lab results. 
 
 
 Enjoy reading my code!
