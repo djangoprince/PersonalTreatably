@@ -1,4 +1,4 @@
-//
+//This where all the light data in the ViewControllers are stored. I used UserDefault interface for that.
 //  UDM.swift
 //  Treatably
 //
