@@ -1,0 +1,155 @@
+//
+//  UDM.swift
+//  Treatably
+//
+//  Created by Safa Jemai on 30/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import Foundation
+import SwiftUI
+
+
+//This class is to save and fetch all needed data into UserDefault
+class  UDM {
+    static let shared = UDM()
+    let defaults = UserDefaults(suiteName: "com.Tehf.Treatably")
+    
+    @IBOutlet weak var label1: UILabel!
+    @IBOutlet weak var label2: UILabel!
+    @IBOutlet weak var label3: UILabel!
+    @IBOutlet weak var label4: UILabel!
+    @IBOutlet weak var label5: UILabel!
+    @IBOutlet weak var label6: UILabel!
+    @IBOutlet weak var label7: UILabel!
+    @IBOutlet weak var labelUserName: UILabel!
+    
+    var UserNameData : String? = "userName"
+    var FamilyNameData : String? = "userName"
+    var GenderData : String? = "userName"
+    var BirthdayData : String? = "userName"
+    var EmailData : String? = "userName"
+    var PhoneNumberData : String? = "userName"
+  
+    var SavedIngString : String? = ""
+    
+    
+    
+    //building defferent functions for each member of userDefault
+    //7 functiosn for 7 types of inputs
+    func ThyroglobulinAntibodies() -> String? {
+      
+     if let value1 = UDM.shared.defaults?.value(forKey:"ThyroglobulinAntibodies") as? String {
+                label1.text = value1
+    }
+           return label1.text!
+}
+    
+    func ThyroidPeroxidaseAntibodies() -> String? {
+          
+         if let value2 = UDM.shared.defaults?.value(forKey:"ThyroidPeroxidaseAntibodies") as? String {
+                    label2.text = value2
+        }
+               return label2.text!
+    }
+    
+    
+    func T3Total() -> String? {
+          
+         if let value3 = UDM.shared.defaults?.value(forKey:"T3Total") as? String {
+                    label3.text = value3
+        }
+               return label3.text!
+    }
+    
+    func T4Free() -> String? {
+          
+         if let value4 = UDM.shared.defaults?.value(forKey:"T4Free") as? String {
+                    label4.text = value4
+        }
+               return label4.text!
+    }
+    
+    func T4Total() -> String? {
+          
+         if let value5 = UDM.shared.defaults?.value(forKey:"T4Total") as? String {
+                    label5.text = value5
+        }
+               return label5.text!
+    }
+    
+    func TSH() -> String? {
+          
+         if let value6 = UDM.shared.defaults?.value(forKey:"TSH") as? String {
+                    label6.text = value6
+        }
+               return label6.text!
+    }
+    
+    func Comment() -> String? {
+          
+         if let value7 = UDM.shared.defaults?.value(forKey:"Comment") as? String {
+                    label7.text = value7
+        }
+               return label7.text!
+    }
+   
+ 
+    
+    func SavedIngredientsLabelFcn() -> String? {
+          
+         if let SavedIngString = UDM.shared.defaults?.value(forKey:"SavedIngredientsLabel") as? String {
+                    print(SavedIngString)
+        }
+               return SavedIngString
+    }
+    
+    //save the data of user in the UserDefault
+       func UserNameAccount() -> String? {
+             
+            if let UserNameData = UDM.shared.defaults?.value(forKey:"userName") as? String {
+                       print(UserNameData)
+           }
+                  return UserNameData
+       }
+    func FamilyNameFcn() -> String? {
+             
+            if let FamilyNameData = UDM.shared.defaults?.value(forKey:"userFamilyName") as? String {
+                       print(FamilyNameData)
+           }
+                  return FamilyNameData
+       }
+    
+    func GenderFcn() -> String? {
+             
+            if let GenderData = UDM.shared.defaults?.value(forKey:"userGender") as? String {
+                       print(GenderData)
+           }
+                  return GenderData
+       }
+    
+    func BirthdayFcn() -> String? {
+             
+            if let BirthdayData = UDM.shared.defaults?.value(forKey:"userBirthday") as? String {
+                       print(BirthdayData)
+           }
+                  return BirthdayData
+       }
+    
+    func EmailLabelFcn() -> String? {
+             
+            if let EmailData = UDM.shared.defaults?.value(forKey:"userEmail") as? String {
+                       print(EmailData)
+           }
+                  return EmailData
+       }
+    
+    func PhoneNumberFcn() -> String? {
+             
+            if let PhoneNumberData = UDM.shared.defaults?.value(forKey:"userPhoneNumber") as? String {
+                       print(PhoneNumberData)
+           }
+                  return PhoneNumberData
+       }
+    
+}
