@@ -1,0 +1,211 @@
+//
+//  CreateAccountViewController.swift
+//  Treatably
+//
+//  Created by Safa Jemai on 27/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import UIKit
+
+class CreateAccountViewController: UIViewController { 
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var userFamilyNameTextField: UITextField!
+    @IBOutlet weak var userPasswordTextField: UITextField!
+    @IBOutlet weak var userKannitalaTextField: UITextField!
+    @IBOutlet weak var userEmailTextField: UITextField!
+    @IBOutlet weak var userPhoneTextField: UITextField!
+    @IBOutlet weak var message: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+    
+   @IBAction func Nameverif(_ sender: Any){
+        //check for validity of the name
+        let text = userNameTextField.text ?? ""
+        if text.isValidName() {
+            userNameTextField.textColor = UIColor.black
+            
+        }
+        else {
+            userNameTextField.textColor = UIColor.red
+            message.text = "not valid name"
+        }
+    }
+    
+    @IBAction func FamilyNameverif(_ sender: Any){
+        //check for validity of the name
+        let text = userFamilyNameTextField.text ?? ""
+        if text.isValideFamilyName() {
+            userFamilyNameTextField.textColor = UIColor.black
+            
+        }
+        else {
+            userFamilyNameTextField.textColor = UIColor.red
+            message.text = "not valid family name"
+        }
+    }
+    
+    @IBAction func Emailverif(_ sender: Any){
+        //check for validity of the email
+        let text = userEmailTextField.text ?? ""
+        if text.isValideEmail() {
+            userEmailTextField.textColor = UIColor.black
+            
+        }
+        else {
+            userEmailTextField.textColor = UIColor.red
+            message.text = "not valid email"
+        }
+    }
+    
+    @IBAction func Kannitalaverif(_ sender: Any){
+        //check for validity of the kannitala
+        let text = userKannitalaTextField.text ?? ""
+        if text.isValideKannitala() {
+        userKannitalaTextField.textColor = UIColor.black
+            
+        }
+        else {
+            userKannitalaTextField.textColor = UIColor.red
+            message.text = "not valid kannitala"
+        }
+    }
+    
+    @IBAction func Passwordverif(_ sender: Any){
+        //check for validity of the password
+        let text = userPasswordTextField.text ?? ""
+        if text.isValidePassword() {
+            userPasswordTextField.textColor = UIColor.black
+            
+        }
+        else {
+            userPasswordTextField.textColor = UIColor.red
+            message.text = "week password"
+        }
+    }
+    @IBAction func PhoneNumberverif(_ sender: Any){
+           //check for validity of the phone number
+           let text = userPhoneTextField.text ?? ""
+        if text.filterPhoneNumber().isValidePhoneNumber() {
+               userPhoneTextField.textColor = UIColor.black
+               
+           }
+           else {
+               userPhoneTextField.textColor = UIColor.red
+               message.text = "invalid Phone number "
+           }
+       }
+
+    @IBAction func CreateAccountButtonTapped(_sender: Any) {
+        let userName = userNameTextField.text;
+        let userFamilyName = userFamilyNameTextField.text;
+        let userPassword = userPasswordTextField.text;
+        let userKannitala = userKannitalaTextField.text;
+        let userEmail = userEmailTextField.text;
+        let userPhoneNumber = userPhoneTextField.text ;
+    
+    //check for empty files
+        if (((userEmail?.isEmpty ) != nil) || ((userPassword?.isEmpty) != nil)
+            || ((userName?.isEmpty) != nil) || ((userFamilyName?.isEmpty) != nil) || ((userKannitala?.isEmpty) != nil)  || ((userPhoneNumber?.isEmpty) != nil))
+        {
+            //display alert msg
+            displayMyAlertMessage(userMessage: "All fields are required");
+            return;
+        }
+        
+        
+        // Save data in the USErDefault
+        UDM.shared.defaults?.setValue(userName, forKey: "userName");
+        UDM.shared.defaults?.setValue(userEmail, forKey: "userFamilyName");
+        UDM.shared.defaults?.setValue(userKannitala, forKey: "userKannitala");
+        UDM.shared.defaults?.setValue(userPassword, forKey: "userPassword");
+        UDM.shared.defaults?.setValue(userEmail, forKey: "userEmail");
+        UDM.shared.defaults?.setValue(userPhoneNumber, forKey: "userPhoneNumber");
+        UDM.shared.defaults?.synchronize();
+        // display confirmation msg
+        _ = UIAlertController(title: "Alert",message: "Registration is successful", preferredStyle: UIAlertController.Style.alert);
+        
+        //data security: phone verification
+        // insert the auth key and fetch the url to make the verification work
+        PhoneAuthProvider.provider().verifyPhoneNumber(userPhoneNumber, uiDelegate: nil) { (verificationID, error) in
+          if let error = error {
+            self.showMessagePrompt(error.localizedDescription)
+            return
+          }
+            //to be continued here
+          // Sign in using the verificationID and the code sent to the user
+          
+        }
+        
+        
+        
+        
+        }
+    
+    
+    
+    //make test on phone number : if it starts with 00354 or sth else or if it is without
+    // send sms to phone number with code and write code 
+    
+    func displayMyAlertMessage(userMessage: String)
+    {
+        _ = UIAlertController(title: "Alert",message: userMessage, preferredStyle: UIAlertController.Style.alert);
+    }
+    //pass data from connect view to tab view controller with segue
+    override func prepare (for segue : UIStoryboardSegue, sender : Any?){
+        
+        if  let TabMain = segue.destination as? TabMain {
+        TabMain.userName = userNameTextField.text
+            
+       
+        }
+    }
+  
+}
+
+extension String {
+    
+    func isValidName() -> Bool {
+        let inputRegEx = "^[a-zA-Z _]{1,100}$"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with: self)
+        
+    }
+    
+    func isValideFamilyName() -> Bool {
+        let inputRegEx = "^[a-zA-Z]{1,100}$"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with: self)
+    }
+    
+    func isValideEmail() -> Bool {
+        let inputRegEx = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[A-Za-z]{4,100}"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with: self)
+    }
+    
+    func isValideKannitala() -> Bool {
+        let inputRegEx = "[0-9]{10}$"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with: self)
+    }
+    
+    func isValidePhoneNumber() -> Bool {
+        let inputRegEx = "^((\\+)||(00))[0-9]{6,14}$"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with: self)
+    }
+    
+    func isValidePassword() -> Bool {
+        let inputRegEx = "^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]@#$%^&*{}()-+=?>.<,:;~]{6,100}$"
+        let inputpred = NSPredicate(format: "SELF MATCHES %@", inputRegEx)
+        return inputpred.evaluate(with: self)
+    }
+    public func filterPhoneNumber() -> String {
+        return String(self.filter {!"()._-\n\t\\r".contains($0)})
+    }
+}
