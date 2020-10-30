@@ -1,0 +1,17 @@
+//
+//  mainNavigatorController.swift
+//  Treatably
+//
+//  Created by Safa Jemai on 28/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import Foundation
+import  UIKit
+
+class mainNavigatorController: UINavigationController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+    }
+}
