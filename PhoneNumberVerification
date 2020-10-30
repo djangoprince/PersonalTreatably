@@ -1,0 +1,37 @@
+//
+//  PhoneNumberVerification.swift
+//  Treatably
+//
+//  Created by Safa Jemai on 29/10/2020.
+//  Copyright © 2020 Treatably. All rights reserved.
+//
+
+import UIKit
+// first find the url then use the class codebale which will transfer our data into a class then create variables then requests!
+class PhoneNumberVerification: UIViewController {
+//define variables
+    
+   
+    @IBOutlet weak var VerifyButton: UIButton!
+    @IBOutlet weak var BackButton: UIButton!
+    @IBOutlet weak var CodeTextField: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Do any additional setup after loading the view.
+    }
+  
+    
+    //check if the code is same as in the firebase or not
+    @IBAction func VerifyBtnAction(_ sender: Any) {
+        
+        
+    }
+    
+}
+
+
+
+
+  //we need to register the auth key
